@@ -6,7 +6,7 @@ provider:
   lambdaHashingVersion: 20201221
   name: aws
   region: us-east-1
-  runtime: python3.7
+  runtime: python3.8
   profile: pedro
 
 package:
