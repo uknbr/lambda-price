@@ -17,9 +17,3 @@ package: ## Create Package
 	pip3 install -q -t . -r requirements.txt --upgrade
 	zip -r -q $(LAMBDA_PACKAGE) *
 	du -hs $(LAMBDA_PACKAGE)
-
-lambda: ## Create Lambda
-	aws lambda create-function --function-name $(LAMBDA_NAME) --zip-file fileb://$(LAMBDA_PACKAGE) --handler main.handler --runtime python3.7
-
-invoke: ## Invoke Lambda
-	aws lambda invoke --function-name $(LAMBDA_NAME) out --log-type Tail --payload '{ "code": "$(PRODUCT)", "source": "$(SOURCE)" }' --profile $(LAMBDA_PROFILE) | jq -r .LogResult | base64 -d
