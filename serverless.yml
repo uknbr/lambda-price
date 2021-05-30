@@ -1,0 +1,20 @@
+org: uknbr
+app: lambda-price
+service: lambda-price
+
+provider:
+  lambdaHashingVersion: 20201221
+  name: aws
+  region: us-east-1
+  runtime: python3.7
+  profile: pedro
+
+package:
+  artifact: price.zip
+
+functions:
+  main:
+    handler: main.handler
+    environment:
+      DEBUG: False
+      SSL: True
